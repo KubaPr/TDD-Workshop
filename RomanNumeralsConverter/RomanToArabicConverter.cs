@@ -1,6 +1,6 @@
 ﻿namespace RomanNumeralsConverter
 {
-  public class RomanToArabicConverter
+  public class RomanToArabicConverter : IRomanToArabicConverter
   {
     public int ConvertToArabic(string romanNumeral)
     {

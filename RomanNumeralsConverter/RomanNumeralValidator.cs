@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace RomanNumeralsConverter
 {
-  public class RomanNumeralValidator
+  public class RomanNumeralValidator : IRomanNumeralValidator
   {
     public ValidationResult Validate(string romanNumeral)
     {

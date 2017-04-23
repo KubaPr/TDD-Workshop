@@ -1,36 +1,26 @@
 ﻿using System;
+using System.Reflection;
+using Ninject;
 
 namespace RomanNumeralsConverter
 {
   internal class Program
   {
-    private static RomanNumeralValidator _validator;
-    private static RomanToArabicConverter _romanToArabicConverter;
-
     private static void Main(string[] args)
     {
-      _validator = new RomanNumeralValidator();
-      _romanToArabicConverter = new RomanToArabicConverter();
+      var kernel = new StandardKernel();
+      kernel.Load(Assembly.GetExecutingAssembly());
+
+      var romanToArabicConverterManager = kernel.Get<IRomanToArabicConverterManager>();
 
       while (true)
       {
         Console.WriteLine("Write the Roman Numeral to Convert");
         var userInput = Console.ReadLine();
 
-        var validationResults = _validator.Validate(userInput);
+        var result = romanToArabicConverterManager.TryConvertingRomanToArabic(userInput);
 
-        if (validationResults.IsValid)
-        {
-          var result = _romanToArabicConverter.ConvertToArabic(userInput);
-          Console.WriteLine(result.ToString());
-        }
-        else
-        {
-          foreach (var result in validationResults.Messages)
-          {
-            Console.WriteLine(result);
-          }
-        }
+        Console.WriteLine(result);
       }
     }
   }
