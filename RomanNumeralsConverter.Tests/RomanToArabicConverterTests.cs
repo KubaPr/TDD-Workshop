@@ -3,14 +3,14 @@ using NUnit.Framework;
 
 namespace RomanNumeralsConverter.Tests
 {
-  internal class ConverterTests
+  internal class RomanToArabicConverterTests
   {
-    private Converter _converter;
+    private RomanToArabicConverter _romanToArabicConverter;
 
     [SetUp]
     public void SetUp()
     {
-      _converter = new Converter();
+      _romanToArabicConverter = new RomanToArabicConverter();
     }
 
     [TestCase("I", 1)]
@@ -22,7 +22,7 @@ namespace RomanNumeralsConverter.Tests
     [TestCase("M", 1000)]
     public void Should_ReturnExpectedArabic_When_GivenSingleConstantRoman(string romanNumber, int expectedArabicNumber)
     {
-      var convertedNumber = _converter.ConvertToArabic(romanNumber);
+      var convertedNumber = _romanToArabicConverter.ConvertToArabic(romanNumber);
       convertedNumber.Should().Be(expectedArabicNumber);
     }
 
@@ -30,7 +30,7 @@ namespace RomanNumeralsConverter.Tests
     [TestCase("DCLXVI", 666)]
     public void Should_AddNumeralValueToTotal_When_NumeralValueIsGreaterOrEqualToNextNumeralValue(string romanNumber, int expectedArabicNumber)
     {
-      var convertedNumber = _converter.ConvertToArabic(romanNumber);
+      var convertedNumber = _romanToArabicConverter.ConvertToArabic(romanNumber);
       convertedNumber.Should().Be(expectedArabicNumber);
     }
 
@@ -38,7 +38,7 @@ namespace RomanNumeralsConverter.Tests
     [TestCase("IV", 4)]
     public void Should_SubstractNumeralValueFromTotal_When_NumeralValueIsLessThanNextNumeralValue(string romanNumber, int expectedArabicNumber)
     {
-      var convertedNumber = _converter.ConvertToArabic(romanNumber);
+      var convertedNumber = _romanToArabicConverter.ConvertToArabic(romanNumber);
       convertedNumber.Should().Be(expectedArabicNumber);
     }
 

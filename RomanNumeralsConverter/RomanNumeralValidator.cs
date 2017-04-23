@@ -5,13 +5,6 @@ namespace RomanNumeralsConverter
 {
   public class RomanNumeralValidator
   {
-    private readonly ConstantRomanSymbols _validRomanSymbols;
-
-    public RomanNumeralValidator()
-    {
-      _validRomanSymbols = new ConstantRomanSymbols();
-    }
-
     public ValidationResult Validate(string romanNumeral)
     {
       var result = new ValidationResult();
@@ -63,7 +56,7 @@ namespace RomanNumeralsConverter
 
       foreach (var character in romanNumeral)
       {
-        if (!_validRomanSymbols.ArabicValuesByRomanSymbols.ContainsKey(character)) result.Messages.Add("Input is invalid - one or more input characters are not a valid Roman numeral");
+        if (!ConstantRomanSymbols.ArabicValuesByRomanSymbols.ContainsKey(character)) result.Messages.Add("Input is invalid - one or more input characters are not a valid Roman numeral");
       }
 
       return result;
@@ -73,7 +66,7 @@ namespace RomanNumeralsConverter
     {
       var result = new ValidationResult();
 
-      foreach (var character in _validRomanSymbols.ArabicValuesByRomanSymbols.Keys)
+      foreach (var character in ConstantRomanSymbols.ArabicValuesByRomanSymbols.Keys)
       {
         var numeralFourTimesInARow = new string(character, 4);
         if (romanNumeral.Contains(numeralFourTimesInARow) && character != 'M')
@@ -92,15 +85,15 @@ namespace RomanNumeralsConverter
 
       if (romanNumeral.Length == 1) return result;
 
-      var biggestValueSoFar = _validRomanSymbols.ArabicValuesByRomanSymbols.Values.Max();
+      var biggestValueSoFar = ConstantRomanSymbols.ArabicValuesByRomanSymbols.Values.Max();
 
       for (var i = 0; i < romanNumeral.Length; i++)
       {
-        var currentCharArabicValue = _validRomanSymbols.ArabicValuesByRomanSymbols[romanNumeral[i]];
+        var currentCharArabicValue = ConstantRomanSymbols.ArabicValuesByRomanSymbols[romanNumeral[i]];
         var nextCharArabicValue = 0;
         bool endOfNumeral = i == romanNumeral.Length - 1;
 
-        if (!endOfNumeral) nextCharArabicValue = _validRomanSymbols.ArabicValuesByRomanSymbols[romanNumeral[i + 1]];
+        if (!endOfNumeral) nextCharArabicValue = ConstantRomanSymbols.ArabicValuesByRomanSymbols[romanNumeral[i + 1]];
 
         if (!endOfNumeral)
         {

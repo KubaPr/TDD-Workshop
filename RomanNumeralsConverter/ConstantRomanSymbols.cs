@@ -2,9 +2,9 @@
 
 namespace RomanNumeralsConverter
 {
-  public class ConstantRomanSymbols
+  public static class ConstantRomanSymbols
   {
-    public readonly Dictionary<char, int> ArabicValuesByRomanSymbols = new Dictionary<char, int>()
+    public static readonly Dictionary<char, int> ArabicValuesByRomanSymbols = new Dictionary<char, int>()
         {
             {'I', 1},
             {'V', 5},

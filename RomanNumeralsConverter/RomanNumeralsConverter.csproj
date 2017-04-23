@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConstantRomanSymbols.cs" />
-    <Compile Include="Converter.cs" />
+    <Compile Include="RomanToArabicConverter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RomanNumeralValidator.cs" />

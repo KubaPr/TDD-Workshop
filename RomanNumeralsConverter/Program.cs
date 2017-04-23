@@ -5,12 +5,12 @@ namespace RomanNumeralsConverter
   internal class Program
   {
     private static RomanNumeralValidator _validator;
-    private static Converter _converter;
+    private static RomanToArabicConverter _romanToArabicConverter;
 
     private static void Main(string[] args)
     {
       _validator = new RomanNumeralValidator();
-      _converter = new Converter();
+      _romanToArabicConverter = new RomanToArabicConverter();
 
       while (true)
       {
@@ -21,11 +21,10 @@ namespace RomanNumeralsConverter
 
         if (validationResults.IsValid)
         {
-          var result = _converter.ConvertToArabic(userInput);
+          var result = _romanToArabicConverter.ConvertToArabic(userInput);
           Console.WriteLine(result.ToString());
         }
-
-        if (!validationResults.IsValid)
+        else
         {
           foreach (var result in validationResults.Messages)
           {
