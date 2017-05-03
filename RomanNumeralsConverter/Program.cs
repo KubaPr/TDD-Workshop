@@ -11,7 +11,7 @@ namespace RomanNumeralsConverter
       var kernel = new StandardKernel();
       kernel.Load(Assembly.GetExecutingAssembly());
 
-      var romanToArabicConverterManager = kernel.Get<IRomanToArabicConverterManager>();
+      var romanToArabicConverterManager = kernel.Get<RomanToArabicConverterManager>();
 
       while (true)
       {

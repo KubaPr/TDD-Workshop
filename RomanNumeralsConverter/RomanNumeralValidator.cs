@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace RomanNumeralsConverter
@@ -7,7 +8,6 @@ namespace RomanNumeralsConverter
   {
     public ValidationResult Validate(string romanNumeral)
     {
-      var result = new ValidationResult();
       var results = new List<ValidationResult>();
 
       if (!InputGiven(romanNumeral).IsValid)
@@ -31,59 +31,50 @@ namespace RomanNumeralsConverter
         results.Add(VorLorDNotRepeated(romanNumeral));
       }
 
-      foreach (var r in results)
-      {
-        result.Messages.Add(r.Messages.FirstOrDefault());
-      }
+      if (results.All(r => r.IsValid)) return ValidationResult.CreateValidValidationResult();
 
-      return result;
+      var aggregatedErrorMessage = results.Aggregate("", (current, res) => current + res.ErrorMessage + Environment.NewLine);
+
+      return ValidationResult.CreateInvalidValidationResult(aggregatedErrorMessage);
     }
 
     private ValidationResult InputGiven(string romanNumeral)
     {
-      var result = new ValidationResult();
-
       if (string.IsNullOrEmpty(romanNumeral))
       {
-        result.Messages.Add("Input not given");
+        return ValidationResult.CreateInvalidValidationResult("Input not given");
       }
-      return result;
+
+      return ValidationResult.CreateValidValidationResult();
     }
 
     private ValidationResult AllCharsAreValid(string romanNumeral)
     {
-      var result = new ValidationResult();
-
       foreach (var character in romanNumeral)
       {
-        if (!ConstantRomanSymbols.ArabicValuesByRomanSymbols.ContainsKey(character)) result.Messages.Add("Input is invalid - one or more input characters are not a valid Roman numeral");
+        if (!ConstantRomanSymbols.ArabicValuesByRomanSymbols.ContainsKey(character)) return ValidationResult.CreateInvalidValidationResult("Input is invalid - one or more input characters are not a valid Roman numeral");
       }
 
-      return result;
+      return ValidationResult.CreateValidValidationResult();
     }
 
     private ValidationResult NotThreeSameNumeralsOtherThanMInARow(string romanNumeral)
     {
-      var result = new ValidationResult();
-
       foreach (var character in ConstantRomanSymbols.ArabicValuesByRomanSymbols.Keys)
       {
         var numeralFourTimesInARow = new string(character, 4);
         if (romanNumeral.Contains(numeralFourTimesInARow) && character != 'M')
         {
-          result.Messages.Add("Input is invalid - more than three numerals other than M in a row");
-          break;
+          return ValidationResult.CreateInvalidValidationResult("Input is invalid - more than three numerals other than M in a row");
         }
       }
 
-      return result;
+      return ValidationResult.CreateValidValidationResult();
     }
 
     private ValidationResult SmallerValueNotBeforeLargerValue(string romanNumeral)
     {
-      var result = new ValidationResult();
-
-      if (romanNumeral.Length == 1) return result;
+      if (romanNumeral.Length == 1) return ValidationResult.CreateValidValidationResult();
 
       var biggestValueSoFar = ConstantRomanSymbols.ArabicValuesByRomanSymbols.Values.Max();
 
@@ -101,14 +92,12 @@ namespace RomanNumeralsConverter
           {
             if (GetFirstDigit(currentCharArabicValue) % 5 == 0)
             {
-              result.Messages.Add("Input is invalid - smaller value to the left and is either V, L or D");
-              return result;
+              return ValidationResult.CreateInvalidValidationResult("Input is invalid - smaller value to the left and is either V, L or D");
             }
 
             if (currentCharArabicValue < nextCharArabicValue / 10)
             {
-              result.Messages.Add("Input is invalid - smaller value to the left and is less then one tenth of the next numeral value found");
-              return result;
+              return ValidationResult.CreateInvalidValidationResult("Input is invalid - smaller value to the left and is less then one tenth of the next numeral value found");
             }
 
             currentCharArabicValue = nextCharArabicValue - currentCharArabicValue;
@@ -118,13 +107,12 @@ namespace RomanNumeralsConverter
 
         if (currentCharArabicValue > biggestValueSoFar)
         {
-          result.Messages.Add("Input is invalid - the value must never increase from one letter to the next unless substracting");
-          return result;
+          return ValidationResult.CreateInvalidValidationResult("Input is invalid - the value must never increase from one letter to the next unless substracting");
         }
 
         biggestValueSoFar = currentCharArabicValue;
       }
-      return result;
+      return ValidationResult.CreateValidValidationResult();
     }
 
     private int GetFirstDigit(int number)
@@ -138,8 +126,6 @@ namespace RomanNumeralsConverter
 
     private ValidationResult VorLorDNotRepeated(string romanNumeral)
     {
-      var result = new ValidationResult();
-
       var vCount = 0;
       var lCount = 0;
       var dCount = 0;
@@ -161,9 +147,9 @@ namespace RomanNumeralsConverter
       }
       if (vCount > 1 || lCount > 1 || dCount > 1)
       {
-        result.Messages.Add("Input is invalid - V, L or D repeated more than once");
-      };
-      return result;
+        return ValidationResult.CreateInvalidValidationResult("Input is invalid - V, L or D repeated more than once");
+      }
+      return ValidationResult.CreateValidValidationResult();
     }
   }
 }

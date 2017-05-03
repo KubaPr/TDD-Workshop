@@ -1,9 +1,6 @@
-﻿using System;
-using System.Linq;
-
-namespace RomanNumeralsConverter
+﻿namespace RomanNumeralsConverter
 {
-  public class RomanToArabicConverterManager : IRomanToArabicConverterManager
+  public class RomanToArabicConverterManager
   {
     private readonly IRomanToArabicConverter _romanToArabicConverter;
     private readonly IRomanNumeralValidator _romanNumeralValidator;
@@ -17,18 +14,13 @@ namespace RomanNumeralsConverter
     public string TryConvertingRomanToArabic(string input)
     {
       var validationResult = _romanNumeralValidator.Validate(input);
-      var result = "";
 
-      if (validationResult.IsValid)
+      if (!validationResult.IsValid)
       {
-        var convertToArabic = _romanToArabicConverter.ConvertToArabic(input);
-        result = convertToArabic.ToString();
+        return validationResult.ErrorMessage;
       }
-      else
-      {
-        result = validationResult.Messages.Aggregate(result, (current, message) => current + Environment.NewLine + message);
-      }
-      return result;
+
+      return _romanToArabicConverter.ConvertToArabic(input).ToString();
     }
   }
 }

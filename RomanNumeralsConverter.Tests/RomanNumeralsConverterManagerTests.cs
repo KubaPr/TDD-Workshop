@@ -10,13 +10,13 @@ namespace RomanNumeralsConverter.Tests
     [SetUp]
     public void SetUp()
     {
-      _romanNumeralValidator = new RomanNumeralValidator();
+      _romanNumeralValidator = MockRepository.GenerateStub<RomanNumeralValidator>();
     }
 
     [TestCase("V")]
     public void Should_ConvertRomanNumeralToArabic_When_ValidationIsSuccessful(string validRomanNumeral) //is the name good? Would the name like Should_CallConvertToArabic_When... be good?
     {
-      var romanNumeralsConverterMock = MockRepository.GenerateMock<IRomanToArabicConverter>();
+      var romanNumeralsConverterMock = MockRepository.GenerateStub<IRomanToArabicConverter>();
       var romanToArabicConverterManager = new RomanToArabicConverterManager(romanNumeralsConverterMock, _romanNumeralValidator);
 
       romanToArabicConverterManager.TryConvertingRomanToArabic(validRomanNumeral);
@@ -27,7 +27,7 @@ namespace RomanNumeralsConverter.Tests
     [TestCase("VV")]
     public void Should_NotConvertRomanNumeralToArabic_When_ValidationIsUnsuccessful(string invalidRomanNumeral)
     {
-      var romanNumeralsConverterMock = MockRepository.GenerateMock<IRomanToArabicConverter>();
+      var romanNumeralsConverterMock = MockRepository.GenerateStub<IRomanToArabicConverter>();
       var romanToArabicConverterManager = new RomanToArabicConverterManager(romanNumeralsConverterMock, _romanNumeralValidator);
 
       romanToArabicConverterManager.TryConvertingRomanToArabic(invalidRomanNumeral);
@@ -38,7 +38,7 @@ namespace RomanNumeralsConverter.Tests
     [TestCase("VV")]
     public void Should_ReturnValidationErrors_When_ValidationIsUnsuccessful(string invalidRomanNumeral)
     {
-      var romanNumeralsConverterMock = MockRepository.GenerateMock<IRomanToArabicConverter>();
+      var romanNumeralsConverterMock = MockRepository.GenerateStub<IRomanToArabicConverter>();
       var romanToArabicConverterManager = new RomanToArabicConverterManager(romanNumeralsConverterMock, _romanNumeralValidator);
 
       romanToArabicConverterManager.TryConvertingRomanToArabic(invalidRomanNumeral);

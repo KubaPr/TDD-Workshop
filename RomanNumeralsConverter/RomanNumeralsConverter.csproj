@@ -50,7 +50,6 @@
     <Compile Include="ConstantRomanSymbols.cs" />
     <Compile Include="IRomanNumeralValidator.cs" />
     <Compile Include="IRomanToArabicConverter.cs" />
-    <Compile Include="IRomanToArabicConverterManager.cs" />
     <Compile Include="RomanToArabicConverter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

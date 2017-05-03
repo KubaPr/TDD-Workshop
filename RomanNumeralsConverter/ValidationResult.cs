@@ -1,17 +1,30 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace RomanNumeralsConverter
+﻿namespace RomanNumeralsConverter
 {
   public class ValidationResult
   {
-    public bool IsValid => !Messages.Any();
+    public bool IsValid;
 
-    public List<string> Messages { get; set; }
+    public string ErrorMessage { get; private set; }
 
-    public ValidationResult()
+    private ValidationResult()
     {
-      Messages = new List<string>();
+      IsValid = true;
+    }
+
+    private ValidationResult(string errorMessage)
+    {
+      ErrorMessage = errorMessage;
+      IsValid = false;
+    }
+
+    public static ValidationResult CreateValidValidationResult()
+    {
+      return new ValidationResult();
+    }
+
+    public static ValidationResult CreateInvalidValidationResult(string errorMessage)
+    {
+      return new ValidationResult(errorMessage);
     }
   }
 }

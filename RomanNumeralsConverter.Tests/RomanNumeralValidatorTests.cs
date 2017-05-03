@@ -25,7 +25,7 @@ namespace RomanNumeralsConverter.Tests
 
       var result = _validator.Validate(romanNumeral);
 
-      result.Messages.Should().Contain(errorMessage);
+      result.ErrorMessage.Should().Contain(errorMessage);
     }
 
     [TestCase(null)]
@@ -35,7 +35,7 @@ namespace RomanNumeralsConverter.Tests
 
       var result = _validator.Validate(romanNumeral);
 
-      result.Messages.Should().Contain(errorMessage);
+      result.ErrorMessage.Should().Contain(errorMessage);
     }
 
     [TestCase("")]
@@ -45,7 +45,7 @@ namespace RomanNumeralsConverter.Tests
 
       var result = _validator.Validate(romanNumeral);
 
-      result.Messages.Should().Contain(errorMessage);
+      result.ErrorMessage.Should().Contain(errorMessage);
     }
 
     [TestCase("XXXX")]
@@ -55,7 +55,7 @@ namespace RomanNumeralsConverter.Tests
 
       var result = _validator.Validate(romanNumeral);
 
-      result.Messages.Should().Contain(errorMessage);
+      result.ErrorMessage.Should().Contain(errorMessage);
     }
 
     [TestCase("IL")]
@@ -65,7 +65,7 @@ namespace RomanNumeralsConverter.Tests
 
       var result = _validator.Validate(romanNumeral);
 
-      result.Messages.Should().Contain(errorMessage);
+      result.ErrorMessage.Should().Contain(errorMessage);
     }
 
     [TestCase("VX")]
@@ -75,17 +75,17 @@ namespace RomanNumeralsConverter.Tests
 
       var result = _validator.Validate(romanNumeral);
 
-      result.Messages.Should().Contain(errorMessage);
+      result.ErrorMessage.Should().Contain(errorMessage);
     }
 
     [TestCase("XXXVV")]
     public void Should_ReturnVorLorDRepeatedMoreThanOnceError_When_VorLorDRepeatedMoreThanOnce(string romanNumeral)
     {
-      const string errorMessage = "Input is invalid - V, L or D repeated more than once";
+      const string errorMessage = "Input is invalid - V, L or D repeated more than once\r\n";
 
       var result = _validator.Validate(romanNumeral);
 
-      result.Messages.Should().Contain(errorMessage);
+      result.ErrorMessage.Should().Contain(errorMessage);
     }
 
     [TestCase("VIX")]
@@ -97,7 +97,7 @@ namespace RomanNumeralsConverter.Tests
 
       var result = _validator.Validate(romanNumeral);
 
-      result.Messages.Should().Contain(errorMessage);
+      result.ErrorMessage.Should().Contain(errorMessage);
     }
   }
 }
