@@ -52,11 +52,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ValidationRulesTests\SmallerValueBeforeLargerValueValidatorTests.cs" />
+    <Compile Include="ValidationRulesTests\NoThreeSameNumeralsOtherThanMInARowValidatorTests.cs" />
+    <Compile Include="ValidationRulesTests\AllCharactersValidatorTests.cs" />
+    <Compile Include="ValidationRulesTests\InputGivenValidatorTests.cs" />
     <Compile Include="RomanNumeralsConverterManagerTests.cs" />
     <Compile Include="RomanToArabicConverterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RomanNumeralValidatorTests.cs" />
     <Compile Include="ValidationResultTests.cs" />
+    <Compile Include="ValidationRulesTests\VorLorDNotRepeatedValidatorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RomanNumeralsConverter\RomanNumeralsConverter.csproj">

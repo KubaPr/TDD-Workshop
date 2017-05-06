@@ -11,8 +11,9 @@
       _romanNumeralValidator = romanNumeralValidator;
     }
 
-    public string TryConvertingRomanToArabic(string input)
+    public string TryConvertingRomanToArabic(string userInput)
     {
+      var input = userInput.ToUpper();
       var validationResult = _romanNumeralValidator.Validate(input);
 
       if (!validationResult.IsValid)

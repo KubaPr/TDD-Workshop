@@ -46,9 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ValidationRules\SmallerValueBeforeLargerValueValidator.cs" />
+    <Compile Include="ValidationRules\NoThreeSameNumeralsOtherThanMInARowValidator.cs" />
+    <Compile Include="ValidationRules\AllCharactersValidator.cs" />
     <Compile Include="Bindings.cs" />
     <Compile Include="ConstantRomanSymbols.cs" />
-    <Compile Include="IRomanNumeralValidator.cs" />
+    <Compile Include="ValidationRules\InputGivenValidator.cs" />
     <Compile Include="IRomanToArabicConverter.cs" />
     <Compile Include="RomanToArabicConverter.cs" />
     <Compile Include="Program.cs" />
@@ -56,11 +59,14 @@
     <Compile Include="RomanNumeralValidator.cs" />
     <Compile Include="RomanToArabicConverterManager.cs" />
     <Compile Include="ValidationResult.cs" />
+    <Compile Include="IRomanNumeralValidator.cs" />
+    <Compile Include="ValidationRules\VorLorDNotRepeatedValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
