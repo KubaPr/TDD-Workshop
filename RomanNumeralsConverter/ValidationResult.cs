@@ -8,23 +8,23 @@
 
     private ValidationResult()
     {
-      IsValid = true;
-    }
-
-    private ValidationResult(string errorMessage)
-    {
-      ErrorMessage = errorMessage;
-      IsValid = false;
     }
 
     public static ValidationResult CreateValidValidationResult()
     {
-      return new ValidationResult();
+      return new ValidationResult()
+      {
+        IsValid = true
+      };
     }
 
     public static ValidationResult CreateInvalidValidationResult(string errorMessage)
     {
-      return new ValidationResult(errorMessage);
+      return new ValidationResult()
+      {
+        ErrorMessage = errorMessage,
+        IsValid = false
+      };
     }
   }
 }
