@@ -2,6 +2,13 @@ namespace RomanNumeralsConverter.ValidationRules
 {
   public class VorLorDNotRepeatedValidator : IRomanNumeralValidator
   {
+    public bool ShouldStopOnError { get; }
+
+    public VorLorDNotRepeatedValidator()
+    {
+      ShouldStopOnError = false;
+    }
+
     public ValidationResult Validate(string romanNumeral)
     {
       var vCount = 0;

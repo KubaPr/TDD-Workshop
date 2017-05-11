@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IRomanNumeralValidationManager.cs" />
     <Compile Include="ValidationRules\SmallerValueBeforeLargerValueValidator.cs" />
     <Compile Include="ValidationRules\NoThreeSameNumeralsOtherThanMInARowValidator.cs" />
     <Compile Include="ValidationRules\AllCharactersValidator.cs" />
@@ -56,7 +57,7 @@
     <Compile Include="RomanToArabicConverter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RomanNumeralValidator.cs" />
+    <Compile Include="RomanNumeralValidationManager.cs" />
     <Compile Include="RomanToArabicConverterManager.cs" />
     <Compile Include="ValidationResult.cs" />
     <Compile Include="IRomanNumeralValidator.cs" />

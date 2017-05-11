@@ -2,6 +2,12 @@ namespace RomanNumeralsConverter.ValidationRules
 {
   public class NoThreeSameNumeralsOtherThanMInARowValidator : IRomanNumeralValidator
   {
+    public bool ShouldStopOnError { get; }
+
+    public NoThreeSameNumeralsOtherThanMInARowValidator()
+    {
+      ShouldStopOnError = false;
+    }
     public ValidationResult Validate(string romanNumeral)
     {
       foreach (var character in ConstantRomanSymbols.ArabicValuesByRomanSymbols.Keys)

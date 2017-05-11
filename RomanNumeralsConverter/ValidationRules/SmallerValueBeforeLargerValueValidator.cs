@@ -4,6 +4,13 @@ namespace RomanNumeralsConverter.ValidationRules
 {
   public class SmallerValueBeforeLargerValueValidator : IRomanNumeralValidator
   {
+    public bool ShouldStopOnError { get; }
+
+    public SmallerValueBeforeLargerValueValidator()
+    {
+      ShouldStopOnError = false;
+    }
+
     public ValidationResult Validate(string romanNumeral)
     {
       if (romanNumeral.Length == 1) return ValidationResult.CreateValidValidationResult();

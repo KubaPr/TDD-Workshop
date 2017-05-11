@@ -3,18 +3,18 @@
   public class RomanToArabicConverterManager
   {
     private readonly IRomanToArabicConverter _romanToArabicConverter;
-    private readonly IRomanNumeralValidator _romanNumeralValidator;
+    private readonly IRomanNumeralValidationManager _romanNumeralValidationManager;
 
-    public RomanToArabicConverterManager(IRomanToArabicConverter romanToArabicConverter, IRomanNumeralValidator romanNumeralValidator)
+    public RomanToArabicConverterManager(IRomanToArabicConverter romanToArabicConverter, IRomanNumeralValidationManager romanNumeralValidationManager)
     {
       _romanToArabicConverter = romanToArabicConverter;
-      _romanNumeralValidator = romanNumeralValidator;
+      _romanNumeralValidationManager = romanNumeralValidationManager;
     }
 
     public string TryConvertingRomanToArabic(string userInput)
     {
       var input = userInput.ToUpper();
-      var validationResult = _romanNumeralValidator.Validate(input);
+      var validationResult = _romanNumeralValidationManager.Validate(input);
 
       if (!validationResult.IsValid)
       {

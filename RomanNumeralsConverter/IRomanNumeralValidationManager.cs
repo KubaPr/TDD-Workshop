@@ -1,9 +1,7 @@
 ﻿namespace RomanNumeralsConverter
 {
-  public interface IRomanNumeralValidator
+  public interface IRomanNumeralValidationManager
   {
-    bool ShouldStopOnError { get; }
-
     ValidationResult Validate(string input);
   }
 }

@@ -2,6 +2,13 @@ namespace RomanNumeralsConverter.ValidationRules
 {
   public class AllCharactersValidator : IRomanNumeralValidator
   {
+    public bool ShouldStopOnError { get; }
+
+    public AllCharactersValidator()
+    {
+      ShouldStopOnError = true;
+    }
+
     public ValidationResult Validate(string romanNumeral)
     {
       foreach (var character in romanNumeral)

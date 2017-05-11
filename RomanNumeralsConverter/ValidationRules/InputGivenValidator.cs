@@ -1,16 +1,22 @@
 namespace RomanNumeralsConverter.ValidationRules
 {
   public class InputGivenValidator : IRomanNumeralValidator
+  {
+    public bool ShouldStopOnError { get; }
 
-  {
-    public ValidationResult Validate(string romanNumeral)
-  {
-    if (string.IsNullOrEmpty(romanNumeral))
+    public InputGivenValidator()
     {
-      return ValidationResult.CreateInvalidValidationResult("Input not given");
+      ShouldStopOnError = true;
     }
 
-    return ValidationResult.CreateValidValidationResult();
-  }
+    public ValidationResult Validate(string romanNumeral)
+    {
+      if (string.IsNullOrEmpty(romanNumeral))
+      {
+        return ValidationResult.CreateInvalidValidationResult("Input not given");
+      }
+
+      return ValidationResult.CreateValidValidationResult();
+    }
   }
 }
