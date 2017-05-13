@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using Rhino.Mocks;
-using Rhino.Mocks.Impl;
 
 namespace RomanNumeralsConverter.Tests
 {
