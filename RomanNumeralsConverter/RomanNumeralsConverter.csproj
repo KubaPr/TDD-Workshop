@@ -46,14 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IRomanNumeralValidationManager.cs" />
     <Compile Include="ValidationRules\SmallerValueBeforeLargerValueValidator.cs" />
     <Compile Include="ValidationRules\NoThreeSameNumeralsOtherThanMInARowValidator.cs" />
     <Compile Include="ValidationRules\AllCharactersValidator.cs" />
     <Compile Include="Bindings.cs" />
     <Compile Include="ConstantRomanSymbols.cs" />
     <Compile Include="ValidationRules\InputGivenValidator.cs" />
-    <Compile Include="IRomanToArabicConverter.cs" />
     <Compile Include="RomanToArabicConverter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

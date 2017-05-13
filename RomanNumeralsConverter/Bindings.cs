@@ -7,9 +7,6 @@ namespace RomanNumeralsConverter
   {
     public override void Load()
     {
-      Bind<IRomanToArabicConverter>().To<RomanToArabicConverter>();
-      Bind<IRomanNumeralValidationManager>().To<RomanNumeralValidationManager>();
-
       Bind<IRomanNumeralValidator>().To<AllCharactersValidator>();
       Bind<IRomanNumeralValidator>().To<InputGivenValidator>();
       Bind<IRomanNumeralValidator>().To<NoThreeSameNumeralsOtherThanMInARowValidator>();

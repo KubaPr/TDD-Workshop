@@ -2,10 +2,10 @@
 {
   public class RomanToArabicConverterManager
   {
-    private readonly IRomanToArabicConverter _romanToArabicConverter;
-    private readonly IRomanNumeralValidationManager _romanNumeralValidationManager;
+    private readonly RomanToArabicConverter _romanToArabicConverter;
+    private readonly RomanNumeralValidationManager _romanNumeralValidationManager;
 
-    public RomanToArabicConverterManager(IRomanToArabicConverter romanToArabicConverter, IRomanNumeralValidationManager romanNumeralValidationManager)
+    public RomanToArabicConverterManager(RomanToArabicConverter romanToArabicConverter, RomanNumeralValidationManager romanNumeralValidationManager)
     {
       _romanToArabicConverter = romanToArabicConverter;
       _romanNumeralValidationManager = romanNumeralValidationManager;

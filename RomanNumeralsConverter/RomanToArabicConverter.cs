@@ -1,8 +1,14 @@
 ﻿namespace RomanNumeralsConverter
 {
-  public class RomanToArabicConverter : IRomanToArabicConverter
+  //Why I used virtual method here:
+  /*Reading trough a couple of articles/stackoverflow threads it turned out that 
+  in order to test the ConverterManager class which uses this class as a collaborator I need
+  to either have the interface or the method ConvertToArabic should be virtual. 
+  I don't expect any other implementations of this class so I used virtual method */
+
+  public class RomanToArabicConverter
   {
-    public int ConvertToArabic(string romanNumeral)
+    public virtual int ConvertToArabic(string romanNumeral)
     {
       var total = 0;
 

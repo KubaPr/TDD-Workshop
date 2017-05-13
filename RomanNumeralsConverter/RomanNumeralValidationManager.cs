@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace RomanNumeralsConverter
 {
-  public class RomanNumeralValidationManager : IRomanNumeralValidationManager
+  public class RomanNumeralValidationManager
   {
     private readonly IRomanNumeralValidator[] _validationRules;
 
@@ -13,9 +13,11 @@ namespace RomanNumeralsConverter
       _validationRules = validationRules;
     }
 
-    public ValidationResult Validate(string input)
+    public virtual ValidationResult Validate(string input)
     {
       var results = new List<ValidationResult>();
+
+      if (_validationRules == null) return ValidationResult.CreateValidValidationResult();
 
       foreach (var rule in _validationRules)
       {

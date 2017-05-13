@@ -1,19 +1,20 @@
 ﻿using NUnit.Framework;
 using Rhino.Mocks;
+using Rhino.Mocks.Impl;
 
 namespace RomanNumeralsConverter.Tests
 {
   internal class RomanToArabicConverterManagerTests
   {
-    private IRomanNumeralValidationManager _romanNumeralValidationManager;
-    private IRomanToArabicConverter _romanToArabicConverterMock;
+    private RomanNumeralValidationManager _romanNumeralValidationManager;
+    private RomanToArabicConverter _romanToArabicConverterMock;
     private RomanToArabicConverterManager _subject;
 
     [SetUp]
     public void SetUp()
     {
-      _romanNumeralValidationManager = MockRepository.GenerateStub<IRomanNumeralValidationManager>();
-      _romanToArabicConverterMock = MockRepository.GenerateStub<IRomanToArabicConverter>();
+      _romanNumeralValidationManager = MockRepository.GenerateStub<RomanNumeralValidationManager>(new IRomanNumeralValidator[1]);
+      _romanToArabicConverterMock = MockRepository.GenerateStub<RomanToArabicConverter>();
 
       _subject = new RomanToArabicConverterManager(_romanToArabicConverterMock, _romanNumeralValidationManager);
     }
