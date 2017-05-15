@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using FluentAssertions;
+using NUnit.Framework;
 
 namespace RomanNumeralsConverter.Tests
 {
@@ -6,10 +7,20 @@ namespace RomanNumeralsConverter.Tests
   {
     private ValidationResult _validationResult;
 
-    [SetUp]
-    public void SetUp()
+    [Test]
+    public void Should_ValidationResultBeInvalid_When_ContainsAtLeastOneErrorMessage()
     {
-      _validationResult = new ValidationResult();
+      _validationResult = ValidationResult.CreateInvalidValidationResult("TestErrorMessage");
+
+      _validationResult.IsValid.Should().BeFalse();
+    }
+
+    [Test]
+    public void Should_ValidationResultBeValid_When_ContainsNoErrorMessages()
+    {
+      _validationResult = ValidationResult.CreateValidValidationResult();
+
+      _validationResult.IsValid.Should().BeTrue();
     }
   }
 }

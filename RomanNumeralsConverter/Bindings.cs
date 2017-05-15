@@ -1,4 +1,5 @@
 ﻿using Ninject.Modules;
+using RomanNumeralsConverter.ValidationRules;
 
 namespace RomanNumeralsConverter
 {
@@ -6,9 +7,11 @@ namespace RomanNumeralsConverter
   {
     public override void Load()
     {
-      Bind<IRomanToArabicConverterManager>().To<RomanToArabicConverterManager>();
-      Bind<IRomanToArabicConverter>().To<RomanToArabicConverter>();
-      Bind<IRomanNumeralValidator>().To<RomanNumeralValidator>();
+      Bind<IRomanNumeralValidator>().To<AllCharactersValidator>();
+      Bind<IRomanNumeralValidator>().To<InputGivenValidator>();
+      Bind<IRomanNumeralValidator>().To<NoThreeSameNumeralsOtherThanMInARowValidator>();
+      Bind<IRomanNumeralValidator>().To<SubstractionValidator>();
+      Bind<IRomanNumeralValidator>().To<VorLorDNotRepeatedValidator>();
     }
   }
 }

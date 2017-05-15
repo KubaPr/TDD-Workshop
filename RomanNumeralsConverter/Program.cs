@@ -4,14 +4,14 @@ using Ninject;
 
 namespace RomanNumeralsConverter
 {
-  internal class Program
+  public class Program
   {
     private static void Main(string[] args)
     {
       var kernel = new StandardKernel();
       kernel.Load(Assembly.GetExecutingAssembly());
 
-      var romanToArabicConverterManager = kernel.Get<IRomanToArabicConverterManager>();
+      var romanToArabicConverterManager = kernel.Get<RomanToArabicConverterManager>();
 
       while (true)
       {

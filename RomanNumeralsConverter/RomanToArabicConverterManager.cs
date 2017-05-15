@@ -1,34 +1,27 @@
-﻿using System;
-using System.Linq;
-
-namespace RomanNumeralsConverter
+﻿namespace RomanNumeralsConverter
 {
-  public class RomanToArabicConverterManager : IRomanToArabicConverterManager
+  public class RomanToArabicConverterManager
   {
-    private readonly IRomanToArabicConverter _romanToArabicConverter;
-    private readonly IRomanNumeralValidator _romanNumeralValidator;
+    private readonly RomanToArabicConverter _romanToArabicConverter;
+    private readonly RomanNumeralValidationManager _romanNumeralValidationManager;
 
-    public RomanToArabicConverterManager(IRomanToArabicConverter romanToArabicConverter, IRomanNumeralValidator romanNumeralValidator)
+    public RomanToArabicConverterManager(RomanToArabicConverter romanToArabicConverter, RomanNumeralValidationManager romanNumeralValidationManager)
     {
       _romanToArabicConverter = romanToArabicConverter;
-      _romanNumeralValidator = romanNumeralValidator;
+      _romanNumeralValidationManager = romanNumeralValidationManager;
     }
 
-    public string TryConvertingRomanToArabic(string input)
+    public string TryConvertingRomanToArabic(string userInput)
     {
-      var validationResult = _romanNumeralValidator.Validate(input);
-      var result = "";
+      var input = userInput.ToUpper();
+      var validationResult = _romanNumeralValidationManager.Validate(input);
 
-      if (validationResult.IsValid)
+      if (!validationResult.IsValid)
       {
-        var convertToArabic = _romanToArabicConverter.ConvertToArabic(input);
-        result = convertToArabic.ToString();
+        return validationResult.ErrorMessage;
       }
-      else
-      {
-        result = validationResult.Messages.Aggregate(result, (current, message) => current + Environment.NewLine + message);
-      }
-      return result;
+
+      return _romanToArabicConverter.ConvertToArabic(input).ToString();
     }
   }
 }

@@ -2,6 +2,8 @@
 {
   public interface IRomanNumeralValidator
   {
-    ValidationResult Validate(string romanNumeral);
+    bool ShouldStopOnError { get; }
+
+    ValidationResult Validate(string input);
   }
 }
