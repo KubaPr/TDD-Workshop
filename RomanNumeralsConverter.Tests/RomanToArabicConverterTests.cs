@@ -20,7 +20,7 @@ namespace RomanNumeralsConverter.Tests
     [TestCase("C", 100)]
     [TestCase("D", 500)]
     [TestCase("M", 1000)]
-    public void Should_ReturnExpectedArabic_When_GivenSingleConstantRoman(string romanNumber, int expectedArabicNumber)
+    public void Should_ReturnArabicValueOfRomanCharacter_When_GivenSingleConstantRoman(string romanNumber, int expectedArabicNumber)
     {
       var convertedNumber = _romanToArabicConverter.ConvertToArabic(romanNumber);
       convertedNumber.Should().Be(expectedArabicNumber);
