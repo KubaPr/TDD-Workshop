@@ -41,6 +41,5 @@ namespace RomanNumeralsConverter.Tests
       var convertedNumber = _romanToArabicConverter.ConvertToArabic(romanNumber);
       convertedNumber.Should().Be(expectedArabicNumber);
     }
-
   }
 }

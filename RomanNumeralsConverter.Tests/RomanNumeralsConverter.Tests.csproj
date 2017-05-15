@@ -52,7 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ValidationRulesTests\SmallerValueBeforeLargerValueValidatorTests.cs" />
+    <Compile Include="ValidationRulesTests\SubstractionValidatorTests.cs" />
     <Compile Include="ValidationRulesTests\NoThreeSameNumeralsOtherThanMInARowValidatorTests.cs" />
     <Compile Include="ValidationRulesTests\AllCharactersValidatorTests.cs" />
     <Compile Include="ValidationRulesTests\InputGivenValidatorTests.cs" />

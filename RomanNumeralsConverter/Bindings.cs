@@ -10,7 +10,7 @@ namespace RomanNumeralsConverter
       Bind<IRomanNumeralValidator>().To<AllCharactersValidator>();
       Bind<IRomanNumeralValidator>().To<InputGivenValidator>();
       Bind<IRomanNumeralValidator>().To<NoThreeSameNumeralsOtherThanMInARowValidator>();
-      Bind<IRomanNumeralValidator>().To<SmallerValueBeforeLargerValueValidator>();
+      Bind<IRomanNumeralValidator>().To<SubstractionValidator>();
       Bind<IRomanNumeralValidator>().To<VorLorDNotRepeatedValidator>();
     }
   }

@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ValidationRules\SmallerValueBeforeLargerValueValidator.cs" />
+    <Compile Include="ValidationRules\SubstractionValidator.cs" />
     <Compile Include="ValidationRules\NoThreeSameNumeralsOtherThanMInARowValidator.cs" />
     <Compile Include="ValidationRules\AllCharactersValidator.cs" />
     <Compile Include="Bindings.cs" />

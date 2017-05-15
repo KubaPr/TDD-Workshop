@@ -4,20 +4,20 @@ using RomanNumeralsConverter.ValidationRules;
 
 namespace RomanNumeralsConverter.Tests.ValidationRulesTests
 {
-  internal class SmallerValueBeforeLargerValueValidatorTests
+  internal class SubstractionValidatorTests
   {
-    private SmallerValueBeforeLargerValueValidator _subject;
+    private SubstractionValidator _subject;
 
     [SetUp]
     public void SetUp()
     {
-      _subject = new SmallerValueBeforeLargerValueValidator();
+      _subject = new SubstractionValidator();
     }
 
     [TestCase("IL")]
-    public void Should_ReturnSmallerIsLessThanOneTenthOfTheLargerError_When_SmallerIsLessThanOneTenthOfTheLarger(string romanNumeral) //TODO: to split into separate tests (edge cases), name is awful
+    public void Should_ReturnSubtrahendIsLessThanOneTenthOfTheMinuendError_When_SubtrahendIsLessThanOneTenthOfTheMinuend(string romanNumeral) //TODO: to split into separate tests (edge cases), name is awful
     {
-      const string errorMessage = "Input is invalid - smaller value to the left and is less then one tenth of the next numeral value found";
+      const string errorMessage = "Input is invalid - subtrahend is less then one tenth of the minuend";
 
       var result = _subject.Validate(romanNumeral);
 
@@ -25,9 +25,9 @@ namespace RomanNumeralsConverter.Tests.ValidationRulesTests
     }
 
     [TestCase("VX")]
-    public void Should_ReturnSmallerValueFirstDigitDivisibleBy5Error_When_SmallerValueBeforeLarger_AndConvertedSmallerValueFirstDigitDivisibleBy5(string romanNumeral)
+    public void Should_ReturnSmallerValueFirstDigitDivisibleBy5Error_When_SubstractedValueIsVLorD(string romanNumeral)
     {
-      const string errorMessage = "Input is invalid - smaller value to the left and is either V, L or D";
+      const string errorMessage = "Input is invalid - substracted value is either V, L or D";
 
       var result = _subject.Validate(romanNumeral);
 
